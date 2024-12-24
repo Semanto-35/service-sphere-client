@@ -1,5 +1,7 @@
 import React from 'react';
 import Banner from './Banner';
+import FeaturedServices from './FeaturedServices';
+import OurPartners from './OurPartners';
 
 const Home = () => {
   return (
@@ -7,6 +9,12 @@ const Home = () => {
       <header className='mt-6'>
         <Banner></Banner>
       </header>
+      <section className='border'>
+        <FeaturedServices></FeaturedServices>
+      </section>
+      <section>
+        <OurPartners></OurPartners>
+      </section>
     </div>
   );
 };
