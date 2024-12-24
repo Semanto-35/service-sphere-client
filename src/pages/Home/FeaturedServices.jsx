@@ -10,7 +10,7 @@ const FeaturedServices = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/services`);
+        const { data } = await axios.get(`http://localhost:5000/featuredServices`);
         setServices(data);
       } catch (error) {
         console.error('Error fetching data:', error);
