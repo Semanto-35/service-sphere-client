@@ -4,11 +4,12 @@ import { Navbar, Button, Menu, MenuHandler, MenuList, MenuItem, Avatar, ListItem
 import { HomeIcon, IdentificationIcon, MapIcon, NewspaperIcon, PencilSquareIcon, PowerIcon, } from "@heroicons/react/24/solid";
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import logo from '../assets/icons/logo-icon.png';
+import useAuth from "../hooks/useAuth";
 
 
 const NavbarComponent = () => {
   const [open, setOpen] = useState(false);
-  const user = 'dd'
+  const { user, logOut } = useAuth();
   const links = <>
     <NavLink
       to="/"
@@ -99,20 +100,20 @@ const NavbarComponent = () => {
                   <Avatar
                     variant="circular"
                     size="md"
-                    alt={user}
+                    alt={user?.displayName}
                     withBorder={true}
                     color="blue-gray"
                     className="p-0.5"
-                    src="https://docs.material-tailwind.com/img/face-2.jpg"
+                    src={user?.photoURL}
                   />
                 </MenuHandler>
                 <MenuList className="p-1">
                   <div className="px-4 py-2">
                     <Typography variant="h6" color="blue-gray">
-                      Name
+                      {user?.displayName}
                     </Typography>
                     <Typography variant="small" color="gray">
-                      sabbir@gmail.com
+                      {user?.email}
                     </Typography>
                   </div>
                   <hr className="my-1" />
@@ -192,7 +193,7 @@ const NavbarComponent = () => {
                   </MenuItem>
 
                   {/* Log Out */}
-                  <MenuItem className="flex items-center gap-2 text-red-500">
+                  <MenuItem onClick={logOut} className="flex items-center gap-2 text-red-500">
                     <PowerIcon className="w-4 h-4" />
                     <Typography variant="small" className="font-medium">
                       Log Out
@@ -238,11 +239,13 @@ const NavbarComponent = () => {
           {
             user && <div>
               <div className="flex items-center gap-4">
-                <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="avatar" />
+                <Avatar src={user?.photoURL} alt="avatar" />
                 <div>
-                  <Typography variant="h6">Tania Andrew</Typography>
+                  <Typography variant="h6">
+                    {user?.displayName}
+                  </Typography>
                   <Typography variant="small" color="gray" className="font-normal">
-                    Web Developer
+                    {user?.email}
                   </Typography>
                 </div>
               </div>
@@ -253,7 +256,7 @@ const NavbarComponent = () => {
         </List>
         {user ? (
           <div className="w-full pb-4">
-            <Button className='flex items-center gap-2' variant="text" size="md" color="red">
+            <Button onClick={logOut} className='flex items-center gap-2' variant="text" size="md" color="red">
               <PowerIcon className='w-4 h-4' />
               Log Out
             </Button>
