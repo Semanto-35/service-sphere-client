@@ -5,7 +5,8 @@ import { Controller, useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
-import { CalendarIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
+import { CalendarIcon, ChevronDownIcon, ChevronUpIcon, ExclamationCircleIcon } from '@heroicons/react/24/solid';
+import useAuth from '../../hooks/useAuth';
 
 
 const ServiceDetails = () => {
@@ -13,7 +14,7 @@ const ServiceDetails = () => {
   const [reviews, setReviews] = useState([]);
   const { id } = useParams();
   const [open, setOpen] = useState(false);
-  const user = 'mk'
+  const { user } = useAuth();
 
 
   const {
@@ -138,7 +139,7 @@ const ServiceDetails = () => {
         </Card>
 
         <div className='flex-1 '>
-          <div className="flex shadow-md p-6 rounded-lg justify-between items-center">
+          <div className="flex border shadow-md p-6 rounded-lg justify-between items-center">
             <Typography variant="h4" className="font-bold">
               Reviews ({reviews.length})
             </Typography>
@@ -213,7 +214,7 @@ const ServiceDetails = () => {
           </Collapse>
         </div>
       </div>
-      <Card className='shadow-md p-6 mt-8'>
+      <Card className='border shadow-md p-6 mt-8'>
         <Typography variant="h2" className="font-bold mb-4">
           Add a Review
         </Typography>
@@ -223,8 +224,8 @@ const ServiceDetails = () => {
               {...register("reviewText", {
                 required: "Review is required",
                 minLength: {
-                  value: 16,
-                  message: "Review must be at least 16 characters",
+                  value: 20,
+                  message: "Review must be at least 20 characters",
                 },
               })}
             />
@@ -233,18 +234,7 @@ const ServiceDetails = () => {
               color="red"
               className="mt-1 flex items-center gap-1 font-normal"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="-mt-px h-4 w-4"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              <ExclamationCircleIcon className="w-5" />
               {errors.reviewText.message}
             </Typography>}
           </div>
@@ -270,18 +260,7 @@ const ServiceDetails = () => {
               color="red"
               className="mt-1 flex items-center gap-1 font-normal"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="-mt-px h-4 w-4"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              <ExclamationCircleIcon className="w-5" />
               {errors?.ratings?.message}
             </Typography>}
           </div>
