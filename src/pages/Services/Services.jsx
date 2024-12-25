@@ -10,15 +10,15 @@ const Services = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchServicesData = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/services`);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/services`);
         setServices(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     }
-    fetchData();
+    fetchServicesData();
   }, []);
 
   const h2Variants = {

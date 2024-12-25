@@ -8,15 +8,15 @@ const FeaturedServices = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchFeaturedData = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/featuredServices`);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/featuredServices`);
         setServices(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     }
-    fetchData();
+    fetchFeaturedData();
   }, []);
 
 
