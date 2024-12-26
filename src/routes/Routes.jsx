@@ -7,6 +7,7 @@ import AddService from "../pages/AddService/AddService";
 import Register from "../pages/Auth/Register";
 import Login from "../pages/Auth/Login";
 import MyServices from "../pages/MyServices/MyServices";
+import MyReviews from "../pages/MyReviews/MyReviews";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/my-services',
         element: <MyServices></MyServices>
+      },
+      {
+        path: '/my-reviews',
+        element: <MyReviews></MyReviews>
       },
       {
         path: '/login',

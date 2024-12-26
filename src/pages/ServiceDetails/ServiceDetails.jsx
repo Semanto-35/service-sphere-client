@@ -55,6 +55,7 @@ const ServiceDetails = () => {
   const onSubmit = async (data) => {
     const reviewData = {
       serviceId: id,
+      serviceTitle,
       userEmail: user?.email,
       userName: user?.displayName,
       userPhoto: user?.photoURL,

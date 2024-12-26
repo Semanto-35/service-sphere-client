@@ -12,6 +12,8 @@ const MyServices = () => {
   const [services, setServices] = useState([]);
   const [open, setOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
+  const [search, setSearch] = useState('');
+
   const { register,
     handleSubmit,
     control,
@@ -21,18 +23,32 @@ const MyServices = () => {
 
 
   useEffect(() => {
-    fetchAllaServices();
-  }, [user]);
+    fetchServices(search);
+  }, [user, search]);
 
-  const fetchAllaServices = async () => {
+// search functionality
+  const fetchServices = async (searchQuery = '') => {
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/services/${user?.email}`);
+      if (!user?.email) {
+        return
+      }
+
+      // Include search query in the API call
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/services/${user.email}?search=${search}`
+      );
       setServices(data);
     } catch (error) {
       console.log('Error fetching services:', error);
     }
   };
 
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+
+  // delete functionality
   const handleDelete = async (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -60,12 +76,12 @@ const MyServices = () => {
     });
   };
 
+  // update functionality
   const handleOpen = (service) => {
     setSelectedService(service);
     reset(service);
     setOpen(!open);
   };
-
   const handleUpdateSubmit = async (formData) => {
     const { _id, ...updateData } = formData;
     try {
@@ -96,7 +112,9 @@ const MyServices = () => {
           <Typography variant='h5'>My Posted Services ({services?.length})</Typography>
           <div className='md:w-96'>
             <Input
-              label="Search Invoice"
+              value={search}
+              onChange={handleSearchChange}
+              label="Search Services"
               icon={<MagnifyingGlassIcon className="h-5 w-5" />}
             />
           </div>
@@ -113,7 +131,7 @@ const MyServices = () => {
             </tr>
           </thead>
           <tbody>
-            {services.map((service) => (
+            {services?.length > 0 ? (services.map((service) => (
               <tr key={service._id}>
                 <td className='border p-2'>
                   <Typography
@@ -168,7 +186,8 @@ const MyServices = () => {
                   </div>
                 </td>
               </tr>
-            ))}
+            ))) : (<tr><td className='text-center py-2'>No Services found.</td></tr>)
+            }
           </tbody>
         </table>
       </Card>
@@ -183,7 +202,7 @@ const MyServices = () => {
           <DialogBody className="space-y-4 pb-6">
             <div className="">
               <Input
-              defaultValue={selectedService?.serviceImage}
+                defaultValue={selectedService?.serviceImage}
                 color="blue"
                 label="Service Image URL"
                 type="url"
@@ -207,7 +226,7 @@ const MyServices = () => {
             <div className="flex items-center justify-between gap-6">
               <div>
                 <Input
-                defaultValue={selectedService?.serviceTitle}
+                  defaultValue={selectedService?.serviceTitle}
                   color="blue"
                   label="Service Title"
                   type="text"
@@ -230,7 +249,7 @@ const MyServices = () => {
               </div>
               <div>
                 <Input
-                defaultValue={selectedService?.companyName}
+                  defaultValue={selectedService?.companyName}
                   color="blue"
                   label="Company Name"
                   type="text"
@@ -255,7 +274,7 @@ const MyServices = () => {
 
             <div>
               <Input
-              defaultValue={selectedService?.website}
+                defaultValue={selectedService?.website}
                 color="blue"
                 label="Website"
                 type="url"
@@ -280,7 +299,7 @@ const MyServices = () => {
             <div className="flex items-center justify-between gap-6">
               <div>
                 <Controller
-                defaultValue={selectedService?.category}
+                  defaultValue={selectedService?.category}
                   name="category"
                   control={control}
                   rules={{ required: "Category is required" }}
@@ -308,7 +327,7 @@ const MyServices = () => {
               </div>
               <div>
                 <Input
-                defaultValue={selectedService?.price}
+                  defaultValue={selectedService?.price}
                   color="blue"
                   label="Price (in USD)"
                   type="number"
@@ -334,7 +353,7 @@ const MyServices = () => {
 
             <div className="">
               <Textarea
-              defaultValue={selectedService?.description}
+                defaultValue={selectedService?.description}
                 color="blue"
                 label="Description"
                 {...register("description", {
