@@ -8,12 +8,14 @@ import Register from "../pages/Auth/Register";
 import Login from "../pages/Auth/Login";
 import MyServices from "../pages/MyServices/MyServices";
 import MyReviews from "../pages/MyReviews/MyReviews";
+import PrivateRoutes from "./PrivateRoutes";
+import ErrorPage from "../components/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout></MainLayout>,
-    errorElement: <h3> 404 Not found</h3>,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: '/',
@@ -25,19 +27,19 @@ const router = createBrowserRouter([
       },
       {
         path: '/service/:id',
-        element: <ServiceDetails></ServiceDetails>
+        element: <PrivateRoutes><ServiceDetails></ServiceDetails></PrivateRoutes>
       },
       {
         path: '/add-service',
-        element: <AddService></AddService>
+        element: <PrivateRoutes><AddService></AddService></PrivateRoutes>
       },
       {
         path: '/my-services',
-        element: <MyServices></MyServices>
+        element: <PrivateRoutes><MyServices></MyServices></PrivateRoutes>
       },
       {
         path: '/my-reviews',
-        element: <MyReviews></MyReviews>
+        element: <PrivateRoutes><MyReviews></MyReviews></PrivateRoutes>
       },
       {
         path: '/login',
