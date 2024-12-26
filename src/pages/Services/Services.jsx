@@ -82,7 +82,7 @@ const Services = () => {
       >
         All Services
       </Typography>
-      <div className='mt-8 max-w-4xl mx-auto border flex flex-col md:flex-row gap-6 items-center justify-between'>
+      <div className='mt-8 max-w-4xl mx-auto flex flex-col md:flex-row gap-6 items-center justify-between'>
         <div className='flex'>
           <Button onClick={handleReset}>reset</Button>
         </div>

@@ -9,7 +9,7 @@ const Home = () => {
       <header className='mt-6'>
         <Banner></Banner>
       </header>
-      <section className='border'>
+      <section>
         <FeaturedServices></FeaturedServices>
       </section>
       <section>

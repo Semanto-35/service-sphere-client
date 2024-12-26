@@ -5,9 +5,11 @@ import { Button, Card, CardHeader, Dialog, DialogBody, DialogFooter, DialogHeade
 import { ExclamationCircleIcon, MagnifyingGlassIcon, PencilSquareIcon, TrashIcon } from '@heroicons/react/24/solid';
 import Swal from 'sweetalert2';
 import { Controller, useForm } from 'react-hook-form';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 
 const MyServices = () => {
+  const axiosSecure = useAxiosSecure()
   const { user } = useAuth();
   const [services, setServices] = useState([]);
   const [open, setOpen] = useState(false);
@@ -34,9 +36,7 @@ const MyServices = () => {
       }
 
       // Include search query in the API call
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/services/${user.email}?search=${search}`
-      );
+      const { data } = await axiosSecure.get(`/services/${user.email}?search=${search}`);
       setServices(data);
     } catch (error) {
       console.log('Error fetching services:', error);
@@ -61,14 +61,13 @@ const MyServices = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/service/${id}`);
-
+          const { data } = await axiosSecure.delete(`/service/${id}`);
           Swal.fire({
             title: "Deleted!",
             text: "Your posted service has been deleted.",
             icon: "success"
           });
-          fetchAllaServices();
+          fetchServices();
         } catch (err) {
           console.log(err);
         }
@@ -85,14 +84,13 @@ const MyServices = () => {
   const handleUpdateSubmit = async (formData) => {
     const { _id, ...updateData } = formData;
     try {
-      const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/service/${selectedService._id}`, updateData);
+      const { data } = await axiosSecure.put(`/service/${selectedService._id}`, updateData);
       Swal.fire({
         title: 'Updated!',
         text: 'Your service has been updated successfully.',
         icon: 'success',
       });
-      fetchAllaServices();
-      console.log('done dona dan done');
+      fetchServices();
       setOpen(false);
     } catch (error) {
       console.error('Error updating service:', error);

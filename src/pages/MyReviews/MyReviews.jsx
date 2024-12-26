@@ -5,8 +5,10 @@ import axios from 'axios';
 import { Avatar, Button, Card, CardBody, CardHeader, Dialog, DialogBody, DialogFooter, DialogHeader, Rating, Textarea, Typography } from '@material-tailwind/react';
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/solid';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const MyReviews = () => {
+  const axiosSecure = useAxiosSecure()
   const { user } = useAuth();
   const [reviews, setReviews] = useState([]);
   const [open, setOpen] = useState(false);
@@ -25,7 +27,7 @@ const MyReviews = () => {
 
   const fetchAllReviews = async () => {
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/all-review/${user?.email}`);
+      const { data } = await axiosSecure.get(`/all-review/${user?.email}`);
       setReviews(data);
     } catch (error) {
       console.log('Error fetching services:', error);
@@ -45,7 +47,7 @@ const MyReviews = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/review/${id}`);
+          const { data } = await axiosSecure.delete(`/review/${id}`);
 
           Swal.fire({
             title: "Deleted!",
@@ -69,14 +71,13 @@ const MyReviews = () => {
   const handleUpdateSubmit = async (formData) => {
     const { _id, serviceTitle, ...updateData } = formData;
     try {
-      const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/review/${selectedReviews._id}`, updateData);
+      const { data } = await axiosSecure.put(`/review/${selectedReviews._id}`, updateData);
       Swal.fire({
         title: 'Updated!',
         text: 'Your review has been updated successfully.',
         icon: 'success',
       });
       fetchAllReviews();
-      console.log('done dona dan done');
       setOpen(false);
     } catch (error) {
       console.error('Error updating review:', error);

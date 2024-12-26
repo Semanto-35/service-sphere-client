@@ -3,9 +3,14 @@ import useAuth from "../../hooks/useAuth";
 import { Controller, useForm } from "react-hook-form";
 import { Card, Typography, Input, Textarea, Button, Select, Option } from "@material-tailwind/react";
 import { ExclamationCircleIcon } from "@heroicons/react/24/solid";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import registerLottie from '../../assets/lottie/register.json';
+import Lottie from "lottie-react";
 
 const AddService = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const { register,
     handleSubmit,
     control,
@@ -23,6 +28,8 @@ const AddService = () => {
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/add-service`, serviceData);
+      toast.success('Service added successfully')
+      navigate('/services')
       reset();
     } catch (error) {
       console.error("Error adding service:", error);
@@ -30,9 +37,9 @@ const AddService = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center gap-10 max-w-7xl mx-auto bg-blue-100 py-12">
+    <div className="flex flex-col lg:flex-row justify-center items-center gap-10 max-w-7xl mx-auto bg-blue-gray-100 py-12">
       <div className="flex justify-center mb-10">
-        <img className="w-80 h-60" src="" alt="" />
+      <Lottie className='w-96' animationData={registerLottie}></Lottie>
       </div>
       <Card className="shadow-md p-8">
         <Typography variant="h2" className="font-bold text-blue-600 mb-6 text-center">

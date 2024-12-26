@@ -7,6 +7,7 @@ import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { CalendarIcon, ChevronDownIcon, ChevronUpIcon, ExclamationCircleIcon } from '@heroicons/react/24/solid';
 import useAuth from '../../hooks/useAuth';
+import { toast } from 'react-toastify';
 
 
 const ServiceDetails = () => {
@@ -66,6 +67,7 @@ const ServiceDetails = () => {
     try {
       const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/add-review`, reviewData);
       setReviews([...reviews, data]);
+      toast.success("Review add successsfully")
       reset();
     } catch (error) {
       console.error('Error fetching data:', error);

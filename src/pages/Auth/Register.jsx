@@ -5,6 +5,7 @@ import { Card, Typography, Input, Button } from "@material-tailwind/react";
 import { ExclamationCircleIcon } from "@heroicons/react/24/solid";
 import Lottie from 'lottie-react';
 import registerLottie from '../../assets/lottie/register.json';
+import { toast } from 'react-toastify';
 
 
 const Register = () => {
@@ -25,18 +26,20 @@ const Register = () => {
       const result= await createNewUser(email, password);
       await updateUserProfile({ displayName: name, photoURL });
       setUser({ ...result.user, photoURL, displayName: name })
+      toast.success('Signup Successful')
       navigate("/");
     } catch (err) {
-      console.log(err)
+      toast.error(err?.message)
     }
   };
 
   const googleLogin = async () => {
     try {
       await loginWithGoogle();
+      toast.success('Signin Successful')
       navigate("/");
     } catch (err) {
-      console.log(err.message);
+      toast.error(err?.message)
     }
   };
 

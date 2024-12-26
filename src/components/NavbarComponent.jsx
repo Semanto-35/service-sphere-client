@@ -100,7 +100,7 @@ const NavbarComponent = () => {
                   <Avatar
                     variant="circular"
                     size="md"
-                    alt={user?.displayName}
+                    alt=""
                     withBorder={true}
                     color="blue-gray"
                     className="p-0.5"

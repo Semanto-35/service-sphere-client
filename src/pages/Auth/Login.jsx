@@ -5,6 +5,7 @@ import { ExclamationCircleIcon } from "@heroicons/react/24/solid";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import loginLottie from '../../assets/lottie/login.json';
+import { toast } from "react-toastify";
 
 const Login = () => {
   const { loginWithGoogle, loginUser, } = useAuth();
@@ -22,18 +23,20 @@ const Login = () => {
 
     try {
       await loginUser(email, password);
+      toast.success('Signin Successful')
       navigate(location?.state ? location.state : "/");
     } catch (err) {
-      console.log(err)
+      toast.error(err?.message)
     }
   };
 
   const googleLogin = async () => {
     try {
       await loginWithGoogle();
+      toast.success('Signin Successful')
       navigate(location?.state ? location.state : "/");
     } catch (err) {
-      console.log(err.message);
+      toast.error(err?.message)
     }
   };
 

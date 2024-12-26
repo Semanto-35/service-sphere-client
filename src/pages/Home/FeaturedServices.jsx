@@ -21,7 +21,7 @@ const FeaturedServices = () => {
 
 
   return (
-    <div className='w-full max-w-7xl mx-auto border-2 my-12'>
+    <div className='w-full max-w-7xl mx-auto my-12'>
       <Typography
         variant='h2'
         className='text-center'
