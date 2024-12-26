@@ -3,6 +3,8 @@ import useAuth from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import { Card, Typography, Input, Button } from "@material-tailwind/react";
 import { ExclamationCircleIcon } from "@heroicons/react/24/solid";
+import Lottie from 'lottie-react';
+import registerLottie from '../../assets/lottie/register.json';
 
 
 const Register = () => {
@@ -39,11 +41,10 @@ const Register = () => {
   };
 
 
-
   return (
     <div className="flex flex-col lg:flex-row justify-center items-center gap-10 max-w-7xl mx-auto bg-blue-100 py-12">
       <div className="flex justify-center">
-        <img className="w-80 h-60" src="" alt="" />
+      <Lottie className='w-96' animationData={registerLottie}></Lottie>
       </div>
       <Card className="shadow-md p-8 w-full max-w-md">
         <Typography variant="h2" className="font-bold text-blue-600">

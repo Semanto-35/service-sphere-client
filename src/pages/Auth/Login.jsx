@@ -1,8 +1,10 @@
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
-import { Card, Typography, Input, Button} from "@material-tailwind/react";
+import { Card, Typography, Input, Button } from "@material-tailwind/react";
 import { ExclamationCircleIcon } from "@heroicons/react/24/solid";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Lottie from "lottie-react";
+import loginLottie from '../../assets/lottie/login.json';
 
 const Login = () => {
   const { loginWithGoogle, loginUser, } = useAuth();
@@ -38,7 +40,7 @@ const Login = () => {
   return (
     <div className="flex flex-col lg:flex-row justify-center items-center gap-10 max-w-7xl mx-auto bg-blue-100 py-12">
       <div className="flex justify-center">
-        <img className="w-80 h-60" src="" alt="" />
+        <Lottie animationData={loginLottie}></Lottie>
       </div>
       <Card className="shadow-md p-8 w-full max-w-md">
         <Typography variant="h2" className="font-bold text-green-500">

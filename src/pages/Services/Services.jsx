@@ -1,13 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { Button, Card, CardBody, CardFooter, CardHeader, Typography } from '@material-tailwind/react';
+import { Button, Card, CardBody, CardFooter, CardHeader, Input, Option, Select, Typography } from '@material-tailwind/react';
 import { Link } from 'react-router-dom';
 import { SquaresPlusIcon } from '@heroicons/react/24/solid';
 
 
 const Services = () => {
   const [services, setServices] = useState([]);
+  const [filter, setFilter] = useState('')
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     const fetchServicesData = async () => {
@@ -20,6 +22,22 @@ const Services = () => {
     }
     fetchServicesData();
   }, []);
+
+  useEffect(() => {
+    const fetchAllServices = async () => {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL
+        }/all-services?filter=${filter}&search=${search}`
+      )
+      setServices(data)
+    }
+    fetchAllServices();
+  }, [filter, search]);
+
+  const handleReset = () => {
+    setFilter('')
+    setSearch('')
+  }
 
   const h2Variants = {
     hidden: { opacity: 0, y: -150 },
@@ -59,13 +77,38 @@ const Services = () => {
         </motion.p>
       </div>
       <Typography
-      variant='h3'
-      className='mt-16 text-center'
+        variant='h3'
+        className='mt-16 text-center'
       >
         All Services
       </Typography>
+      <div className='mt-8 max-w-4xl mx-auto border flex flex-col md:flex-row gap-6 items-center justify-between'>
+        <div className='flex'>
+          <Button onClick={handleReset}>reset</Button>
+        </div>
+        <div>
+          <Select color="blue" label="Select Category"
+            value={filter}
+            onChange={(value) => setFilter(value)}
+          >
+            <Option value="Web Hosting">Web Hosting</Option>
+            <Option value="Digital Marketing">Digital Marketing</Option>
+            <Option value="Graphic Design">Graphic Design</Option>
+            <Option value="Software Development">Software Development</Option>
+            <Option value="Consulting">Consulting</Option>
+          </Select>
+        </div>
+        <div>
+          <Input
+            label='Search services title....'
+            type='text'
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
+        </div>
+      </div>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8'>
-        {
+        {services.length > 0 ? (
           services.map(service => (<motion.div key={service._id}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -114,6 +157,11 @@ const Services = () => {
               </CardFooter>
             </Card>
           </motion.div>))
+        ) : (
+          <Typography variant="h6" className="text-center">
+            No services found.
+          </Typography>
+        )
         }
       </div>
     </div>
