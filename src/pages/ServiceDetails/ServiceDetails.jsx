@@ -96,8 +96,8 @@ const ServiceDetails = () => {
         <Card className="flex-1 shadow-lg border border-gray-200 rounded-lg">
           <CardHeader floated={false} className="relative h-96">
             <img
-              src={serviceImage}
-              alt={serviceTitle}
+              src=''
+              alt=''
               className="w-full h-full object-cover rounded-t-lg"
             />
             <div className="absolute top-2 left-2 bg-blue-500 text-white text-sm font-medium py-1 px-3 rounded-full">
@@ -106,13 +106,13 @@ const ServiceDetails = () => {
           </CardHeader>
           <CardBody>
             <Typography variant="h5" className="font-bold text-gray-800 mb-2">
-              {serviceTitle}
+              {serviceTitle || 'hi'}
             </Typography>
             <Typography className="text-sm text-gray-600 mb-4">
-              by <span className="font-medium text-gray-800">{companyName}</span>
+              by <span className="font-medium text-gray-800">{companyName || 'hi'}</span>
             </Typography>
             <Typography className="text-gray-700 mb-4">
-              {description}
+              {description || 'hi'}
             </Typography>
             <div className="flex items-center justify-between">
               <Typography className="text-blue-500 font-semibold text-xl">
@@ -144,7 +144,7 @@ const ServiceDetails = () => {
         <div className='flex-1 '>
           <div className="flex border shadow-md p-6 rounded-lg justify-between items-center">
             <Typography variant="h4" className="font-bold">
-              Reviews ({reviews.length})
+              Reviews ({reviews?.length})
             </Typography>
             <Button
               size='sm'
@@ -209,9 +209,11 @@ const ServiceDetails = () => {
                   </ListItem>
                 ))
               ) : (
-                <Typography className="text-gray-500 text-center">
-                  No reviews yet. Be the first to leave a review!
-                </Typography>
+                <ListItem>
+                  <Typography className="text-gray-500 text-center">
+                    No reviews yet. Be the first to leave a review!
+                  </Typography>
+                </ListItem>
               )}
             </List>
           </Collapse>
