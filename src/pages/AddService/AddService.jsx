@@ -39,7 +39,7 @@ const AddService = () => {
   return (
     <div className="flex flex-col lg:flex-row justify-center items-center gap-10 max-w-7xl mx-auto bg-blue-gray-100 py-12">
       <div className="flex justify-center mb-10">
-      <Lottie className='w-96' animationData={registerLottie}></Lottie>
+      <Lottie className='md:w-96' animationData={registerLottie}></Lottie>
       </div>
       <Card className="shadow-md p-8">
         <Typography variant="h2" className="font-bold text-blue-600 mb-6 text-center">

@@ -86,10 +86,10 @@ const MyReviews = () => {
 
   return (
     <div className="max-w-5xl mx-auto my-12">
-      <Typography variant="h4" className="mb-4">
+      <Typography variant="h4" className="mb-4 mx-4">
         My Reviews ({reviews?.length})
       </Typography>
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 gap-4 mx-4">
         {reviews.map((review) => (
           <Card key={review._id} color="transparent" shadow={false} className="w-full border shadow-md px-4">
             <CardHeader
@@ -135,7 +135,7 @@ const MyReviews = () => {
             <CardBody className="mb-6 p-0">
               <Typography>
                 &quot;
-                {/* {review?.reviewText} */} Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem repellat adipisci in perferendis unde fugit nisi dicta, similique, perspiciatis sint magnam sit molestias cupiditate sequi excepturi, incidunt nesciunt quam molestiae? Beatae, eius ratione impedit reprehenderit sit iste voluptates officia iusto, quod necessitatibus quisquam, libero esse ut ea architecto facere! Ducimus!
+                {review?.reviewText}
                 &quot;
               </Typography>
             </CardBody>

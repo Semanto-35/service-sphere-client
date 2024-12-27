@@ -100,7 +100,7 @@ const MyServices = () => {
 
 
   return (
-    <div className="border-2 max-w-7xl mx-auto my-12">
+    <div className="max-w-7xl mx-auto my-12">
       <Card className="h-full w-full overflow-scroll">
         <CardHeader
           floated={false}

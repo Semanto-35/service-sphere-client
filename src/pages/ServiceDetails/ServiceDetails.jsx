@@ -76,14 +76,14 @@ const ServiceDetails = () => {
 
 
   return (
-    <div className='border-2 max-w-7xl mx-auto px-4 my-8'>
+    <div className='max-w-7xl mx-auto px-4 my-8'>
       <div className="w-full h-[400px] bg-cover bg-center bg-opacity-50 flex flex-col justify-center items-center text-white rounded-md"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80')",
         }}
       >
-        <Typography variant='h3'>Explore service and share your thought</Typography>
+        <Typography variant='h3' className='text-center'>Explore service and share your thought</Typography>
         <Typography variant='lead'>
           Help others to make the right choice
         </Typography>
@@ -96,7 +96,7 @@ const ServiceDetails = () => {
         <Card className="flex-1 shadow-lg border border-gray-200 rounded-lg">
           <CardHeader floated={false} className="relative h-96">
             <img
-              src=''
+              src={serviceImage}
               alt=''
               className="w-full h-full object-cover rounded-t-lg"
             />
@@ -106,13 +106,13 @@ const ServiceDetails = () => {
           </CardHeader>
           <CardBody>
             <Typography variant="h5" className="font-bold text-gray-800 mb-2">
-              {serviceTitle || 'hi'}
+              {serviceTitle}
             </Typography>
             <Typography className="text-sm text-gray-600 mb-4">
-              by <span className="font-medium text-gray-800">{companyName || 'hi'}</span>
+              by <span className="font-medium text-gray-800">{companyName}</span>
             </Typography>
             <Typography className="text-gray-700 mb-4">
-              {description || 'hi'}
+              {description}
             </Typography>
             <div className="flex items-center justify-between">
               <Typography className="text-blue-500 font-semibold text-xl">
@@ -270,6 +270,7 @@ const ServiceDetails = () => {
             </Typography>}
           </div>
           <Button
+          color='blue'
             type="submit"
           >
             Add review

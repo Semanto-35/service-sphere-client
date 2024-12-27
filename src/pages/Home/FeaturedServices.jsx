@@ -1,23 +1,20 @@
 import { Button, Card, CardBody, CardFooter, CardHeader, Typography } from '@material-tailwind/react';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import Spinner from '../../components/Spinner';
 
 const FeaturedServices = () => {
-  const [services, setServices] = useState([]);
-
-  useEffect(() => {
-    const fetchFeaturedData = async () => {
-      try {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/featuredServices`);
-        setServices(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+  const { data: services, isLoading, isError } = useQuery({
+    queryKey: ['featuredServices'], queryFn: async () => {
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/featuredServices`)
+      return data
     }
-    fetchFeaturedData();
-  }, []);
+  });
+
+  if (isLoading) return <Spinner />
+  if (isError) return <p className="text-red-500">Failed to load services.</p>;
 
 
   return (
@@ -28,7 +25,7 @@ const FeaturedServices = () => {
       >
         Featured Services
       </Typography>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 mx-4'>
         {
           services.map(service => (<motion.div key={service._id}
             initial={{ opacity: 0 }}
@@ -39,8 +36,7 @@ const FeaturedServices = () => {
             <Card className="">
               <CardHeader shadow={false} floated={false} className="h-80">
                 <img
-                  src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
-                  alt="card-image"
+                  src={service.serviceImage}
                   className="h-full w-full object-cover"
                 />
               </CardHeader>

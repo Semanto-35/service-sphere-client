@@ -50,11 +50,11 @@ const Services = () => {
   };
 
   return (
-    <div className='w-full max-w-7xl mx-auto border-2 mt-6 mb-12'>
+    <div className='w-full max-w-7xl mx-auto mt-6 mb-12'>
       <div className="w-full h-[500px] bg-cover bg-center bg-opacity-50 flex flex-col justify-center items-center text-white rounded-lg"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80')",
+            "url('https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80')",
         }}
       >
         <motion.h2
@@ -107,7 +107,7 @@ const Services = () => {
           />
         </div>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 mx-4'>
         {services.length > 0 ? (
           services.map(service => (<motion.div key={service._id}
             initial={{ opacity: 0 }}
@@ -118,7 +118,7 @@ const Services = () => {
             <Card className="">
               <CardHeader shadow={false} floated={false} className="h-80">
                 <img
-                  src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
+                  src={service.serviceImage}
                   alt="card-image"
                   className="h-full w-full object-cover"
                 />

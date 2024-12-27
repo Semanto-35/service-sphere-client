@@ -2,7 +2,7 @@
 
 const OurPartners = () => {
   return (
-    <div className="my-16 border max-w-7xl mx-auto">
+    <div className="my-16 max-w-7xl mx-auto">
       <h2 className="text-center text-4xl font-bold mb-6">Meet Our Partners</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-12 rounded-lg bg-blue-gray-100">
         <div className="text-center p-4">
