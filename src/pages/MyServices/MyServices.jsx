@@ -28,7 +28,7 @@ const MyServices = () => {
     fetchServices(search);
   }, [user, search]);
 
-// search functionality
+  // search functionality
   const fetchServices = async (searchQuery = '') => {
     try {
       if (!user?.email) {
@@ -100,16 +100,19 @@ const MyServices = () => {
 
 
   return (
-    <div className="max-w-7xl mx-auto my-12">
-      <Card className="h-full w-full overflow-scroll">
+    <div className="w-full max-w-screen-2xl mx-auto mt-[76px] py-16">
+      <Card className="h-full w-full rounded-none bg-white dark:bg-[rgb(1,21,30)] text-black dark:text-white overflow-scroll px-4">
         <CardHeader
           floated={false}
           shadow={false}
-          className="mb-2 rounded-none py-3 flex flex-col gap-3 md:flex-row items-center justify-between"
+          className="mb-2 rounded-none py-3 flex flex-col gap-3 md:flex-row items-center justify-between bg-white dark:bg-[rgb(1,21,30)] text-black dark:text-white"
         >
-          <Typography variant='h5'>My Posted Services ({services?.length})</Typography>
+          <Typography variant='h5'>
+            My Posted Services ({services?.length})
+          </Typography>
           <div className='md:w-96'>
             <Input
+              className='dark:text-white'
               value={search}
               onChange={handleSearchChange}
               label="Search Services"
@@ -119,7 +122,7 @@ const MyServices = () => {
         </CardHeader>
         <table className="w-full min-w-max table-auto text-left">
           <thead>
-            <tr className="bg-gray-200 text-left text-gray-700">
+            <tr className="text-black dark:text-white text-left ">
               <th className="p-2 border">Service Title</th>
               <th className="p-2 border">Company Name</th>
               <th className="p-2 border">Category</th>

@@ -85,7 +85,7 @@ const MyReviews = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto my-12">
+    <div className="w-full max-w-screen-2xl mx-auto mt-[76px] py-16">
       <Typography variant="h4" className="mb-4 mx-4">
         My Reviews ({reviews?.length})
       </Typography>
@@ -96,7 +96,7 @@ const MyReviews = () => {
               color="transparent"
               floated={false}
               shadow={false}
-              className="mx-0 flex items-center gap-4 pt-0 pb-8"
+              className="mx-0 flex items-center gap-4 pt-0 pb-8 text-black dark:text-white"
             >
               <Avatar
                 size="lg"
@@ -109,7 +109,7 @@ const MyReviews = () => {
                   {review?.serviceTitle}
                 </Typography>
                 <div className="flex items-center justify-between">
-                  <Typography variant="h6" color="blue-gray">
+                  <Typography variant="h6">
                     {review?.userName || 'hajja'}
                   </Typography>
 
@@ -118,7 +118,7 @@ const MyReviews = () => {
                     readOnly
                   />
                 </div>
-                <Typography variant='small' color="blue-gray">
+                <Typography variant='small'>
                   {new Date(review?.reviewDate).toLocaleDateString()}
                 </Typography>
                 <div className='flex justify-end gap-4'>
@@ -132,7 +132,7 @@ const MyReviews = () => {
                 </div>
               </div>
             </CardHeader>
-            <CardBody className="mb-6 p-0">
+            <CardBody className="mb-6 p-0 text-black dark:text-white">
               <Typography>
                 &quot;
                 {review?.reviewText}

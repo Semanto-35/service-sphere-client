@@ -76,8 +76,8 @@ const ServiceDetails = () => {
 
 
   return (
-    <div className='max-w-7xl mx-auto px-4 my-8'>
-      <div className="w-full h-[400px] bg-cover bg-center bg-opacity-50 flex flex-col justify-center items-center text-white rounded-md"
+    <div className='w-full max-w-screen-2xl mx-auto mt-[76px] pb-16 lg:pb-24'>
+      <div className="w-full h-[400px] bg-cover bg-center bg-opacity-50 flex flex-col justify-center items-center text-white"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80')",
@@ -88,13 +88,13 @@ const ServiceDetails = () => {
           Help others to make the right choice
         </Typography>
       </div>
-      <Typography variant='h3' className='text-center mt-12'>
+      <Typography variant='h3' className='text-center mt-16'>
         Explore Service
       </Typography>
 
-      <div className='flex flex-col lg:flex-row gap-8 mt-8'>
-        <Card className="flex-1 shadow-lg border border-gray-200 rounded-lg">
-          <CardHeader floated={false} className="relative h-96">
+      <div className='flex flex-col lg:flex-row gap-8 mt-12 px-4 lg:px-0'>
+        <Card className="flex-1 shadow-lg border border-gray-200 bg-white dark:bg-[rgb(1,21,30)] rounded-lg">
+          <CardHeader floated={false} className="relative h-72 md:h-96">
             <img
               src={serviceImage}
               alt=''
@@ -104,22 +104,22 @@ const ServiceDetails = () => {
               {category}
             </div>
           </CardHeader>
-          <CardBody>
-            <Typography variant="h5" className="font-bold text-gray-800 mb-2">
+          <CardBody className='text-black dark:text-white'>
+            <Typography variant="h5" className="mb-2">
               {serviceTitle}
             </Typography>
-            <Typography className="text-sm text-gray-600 mb-4">
-              by <span className="font-medium text-gray-800">{companyName}</span>
+            <Typography className="text-sm  mb-4">
+              by <span className="font-medium ">{companyName}</span>
             </Typography>
-            <Typography className="text-gray-700 mb-4">
+            <Typography className=" mb-4">
               {description}
             </Typography>
             <div className="flex items-center justify-between">
               <Typography className="text-blue-500 font-semibold text-xl">
                 ${price}/month
               </Typography>
-              <div className="flex items-center space-x-2 text-gray-600 text-sm">
-                <CalendarIcon className="h-5 w-5 text-gray-400" />
+              <div className="flex items-center space-x-2 text-sm">
+                <CalendarIcon className="h-5 w-5 " />
                 <span>Added: {new Date(addedDate).toLocaleDateString()}</span>
               </div>
             </div>
@@ -134,8 +134,8 @@ const ServiceDetails = () => {
               >
                 Visit Website
               </Button>
-              <Typography variant='small' className="">
-                Contact: <span className="font-medium text-gray-800">{user?.email}</span>
+              <Typography variant='small' className="text-black dark:text-white">
+                Contact: {user?.email}
               </Typography>
             </div>
           </CardFooter>
@@ -147,6 +147,7 @@ const ServiceDetails = () => {
               Reviews ({reviews?.length})
             </Typography>
             <Button
+              className='text-black dark:text-white'
               size='sm'
               variant="text"
               onClick={() => setOpen(!open)}
@@ -164,12 +165,12 @@ const ServiceDetails = () => {
               )}
             </Button>
           </div>
-          <Collapse open={open} className='max-h-[600px] overflow-y-scroll'>
+          <Collapse open={open} className='max-h-[400px] md:max-h-[600px] overflow-y-auto'>
             <List>
               {reviews.length > 0 ? (
                 reviews.map((review) => (
                   <ListItem key={review._id}>
-                    <Card color="transparent" shadow={false} className="w-full max-w-[26rem]">
+                    <Card color='transparent' shadow={false} className="w-full">
                       <CardHeader
                         color="transparent"
                         floated={false}
@@ -198,7 +199,7 @@ const ServiceDetails = () => {
                           </Typography>
                         </div>
                       </CardHeader>
-                      <CardBody className="mb-6 p-0">
+                      <CardBody className="mb-6 p-0 items-center">
                         <Typography>
                           &quot;
                           {review?.reviewText}
@@ -210,7 +211,7 @@ const ServiceDetails = () => {
                 ))
               ) : (
                 <ListItem>
-                  <Typography className="text-gray-500 text-center">
+                  <Typography className=" text-center">
                     No reviews yet. Be the first to leave a review!
                   </Typography>
                 </ListItem>
@@ -219,13 +220,14 @@ const ServiceDetails = () => {
           </Collapse>
         </div>
       </div>
-      <Card className='border shadow-md p-6 mt-8'>
+      <Card className='border bg-white dark:bg-[rgb(1,21,30)] text-black dark:text-white shadow-md p-6 mt-8 mx-4 lg:mx-0'>
         <Typography variant="h2" className="font-bold mb-4">
           Add a Review
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
-            <Textarea label="Review Here"
+            <Textarea
+            className='dark:text-white' label="Review Here"
               {...register("reviewText", {
                 required: "Review is required",
                 minLength: {
@@ -270,7 +272,7 @@ const ServiceDetails = () => {
             </Typography>}
           </div>
           <Button
-          color='blue'
+            color='blue'
             type="submit"
           >
             Add review

@@ -37,7 +37,7 @@ const AddService = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center gap-10 max-w-7xl mx-auto bg-blue-gray-100 py-12">
+    <div className="flex flex-col lg:flex-row justify-center items-center gap-10 max-w-screen-2xl mx-auto mt-[76px] py-16">
       <div className="flex justify-center mb-10">
       <Lottie className='md:w-96' animationData={registerLottie}></Lottie>
       </div>
