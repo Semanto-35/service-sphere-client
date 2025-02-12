@@ -54,24 +54,6 @@ const Footer = () => {
                   Features
                 </Typography>
               </li>
-              <li>
-                <Typography
-                  as="a"
-                  href="#"
-                  className="py-1.5 font-normal transition-colors hover:text-blue-500"
-                >
-                  Solutions
-                </Typography>
-              </li>
-              <li>
-                <Typography
-                  as="a"
-                  href="#"
-                  className="py-1.5 font-normal transition-colors hover:text-blue-500"
-                >
-                  Tutorials
-                </Typography>
-              </li>
             </ul>
             <ul>
               <Typography
@@ -84,7 +66,7 @@ const Footer = () => {
               <li>
                 <Typography
                   as="a"
-                  href="#"
+                  href="/"
                   className="py-1.5 font-normal transition-colors hover:text-blue-500"
                 >
                   Home
@@ -93,7 +75,7 @@ const Footer = () => {
               <li>
                 <Typography
                   as="a"
-                  href="#"
+                  href="/services"
                   className="py-1.5 font-normal transition-colors hover:text-blue-500"
                 >
                   Services
@@ -102,7 +84,7 @@ const Footer = () => {
               <li>
                 <Typography
                   as="a"
-                  href="#"
+                  href="/my-reviews"
                   className="py-1.5 font-normal transition-colors hover:text-blue-500"
                 >
                   Reviews
@@ -111,7 +93,7 @@ const Footer = () => {
               <li>
                 <Typography
                   as="a"
-                  href="#"
+                  href="/"
                   className="py-1.5 font-normal transition-colors hover:text-blue-500"
                 >
                   About us
@@ -132,25 +114,7 @@ const Footer = () => {
                   href="#"
                   className="py-1.5 font-normal transition-colors hover:text-blue-500"
                 >
-                  Blog
-                </Typography>
-              </li>
-              <li>
-                <Typography
-                  as="a"
-                  href="#"
-                  className="py-1.5 font-normal transition-colors hover:text-blue-500"
-                >
                   Newslatter
-                </Typography>
-              </li>
-              <li>
-                <Typography
-                  as="a"
-                  href="#"
-                  className="py-1.5 font-normal transition-colors hover:text-blue-500"
-                >
-                  Events
                 </Typography>
               </li>
               <li>
@@ -174,16 +138,16 @@ const Footer = () => {
             Rights Reserved.
           </Typography>
           <div className="flex gap-4 sm:justify-center">
-            <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+            <Typography as="a" href="https://www.facebook.com/semanto3521" className="opacity-80 transition-opacity hover:opacity-100">
               <img className="w-5 h-5" src={facebook} alt="" />
             </Typography>
-            <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+            <Typography as="a" href="https://www.facebook.com/semanto3521" className="opacity-80 transition-opacity hover:opacity-100">
               <img className="w-5 h-5" src={instagram} alt="" />
             </Typography>
-            <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+            <Typography as="a" href="https://x.com/Semanto_35" className="opacity-80 transition-opacity hover:opacity-100">
               <img className="w-5 h-5" src={twitter} alt="" />
             </Typography>
-            <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+            <Typography as="a" href="https://www.linkedin.com/in/sabbir-hossain-semanto/" className="opacity-80 transition-opacity hover:opacity-100">
               <img className="w-5 h-5" src={linkedin} alt="" />
             </Typography>
           </div>
