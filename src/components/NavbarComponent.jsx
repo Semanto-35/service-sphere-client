@@ -85,8 +85,8 @@ const NavbarComponent = () => {
   </>
 
   return (
-    <Navbar fullWidth className="fixed top-0 left-0 z-50 p-0 bg-white dark:bg-black border-none">
-      <div className="flex items-center justify-between max-w-screen-2xl mx-auto px-4 py-2 text-black dark:text-white">
+    <Navbar fullWidth className="fixed top-0 left-0 z-50 p-0 bg-white dark:bg-black border-none px-4 shadow-none">
+      <div className="flex items-center justify-between max-w-screen-2xl mx-auto py-2 text-black dark:text-white">
         {/* Logo */}
         <Link to={'/'}>
           <Typography
@@ -178,7 +178,7 @@ const NavbarComponent = () => {
       </div>
 
       {/* Mobile Navigation Links */}
-      <Collapse className='lg:hidden px-4' open={open}
+      <Collapse className='lg:hidden' open={open}
       >
         <List className="my-4 p-0 lg:my-0 lg:p-1 text-black dark:text-white">
           {
