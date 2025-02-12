@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutUs = () => {
   return (
-    <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center bg-gray-50 gap-8 my-12">
+    <div className="w-full pb-16 max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-center bg-gray-50 gap-8 my-12">
       <div className="lg:w-1/2">
         <img
           src="https://i.ibb.co.com/jG0xqt6/service-2.jpg"

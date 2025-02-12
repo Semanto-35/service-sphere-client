@@ -20,9 +20,9 @@ const Counts = () => {
 
 
   return (
-    <div className="max-w-7xl bg-white py-12 mx-auto">
+    <div className="w-full max-w-screen-2xl py-16 lg:py-24 mx-auto">
       <h2 className="text-3xl font-bold text-center mb-6">Platform Stats</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 text-center bg-cyan-100 rounded-lg">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-12 text-center bg-cyan-100 rounded-lg">
         <div className="p-8">
           <h3 className="text-xl font-semibold text-blue-600">Total Services</h3>
           <CountUp start={0} end={stats.services} duration={2.5} separator="," className="text-4xl font-bold text-gray-800" />

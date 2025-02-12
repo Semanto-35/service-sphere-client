@@ -5,6 +5,7 @@ import OurPartners from './OurPartners';
 import HowItWorks from './HowItWorks';
 import Counts from '../../components/Counts';
 import AboutUs from '../../components/AboutUs';
+import Newsletter from './NewsLetter';
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <HowItWorks></HowItWorks>
       <Counts></Counts>
       <AboutUs></AboutUs>
+      <Newsletter/>
     </div>
   );
 };
