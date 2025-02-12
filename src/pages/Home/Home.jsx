@@ -9,18 +9,12 @@ import AboutUs from '../../components/AboutUs';
 const Home = () => {
   return (
     <div>
-      <header className='mt-6'>
-        <Banner></Banner>
-      </header>
-      <section>
-        <FeaturedServices></FeaturedServices>
-      </section>
-      <section>
-        <OurPartners></OurPartners>
-        <HowItWorks></HowItWorks>
-        <Counts></Counts>
-        <AboutUs></AboutUs>
-      </section>
+      <Banner></Banner>
+      <FeaturedServices></FeaturedServices>
+      <OurPartners></OurPartners>
+      <HowItWorks></HowItWorks>
+      <Counts></Counts>
+      <AboutUs></AboutUs>
     </div>
   );
 };
