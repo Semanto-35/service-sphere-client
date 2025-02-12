@@ -25,7 +25,6 @@ const Newsletter = () => {
             label="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className=""
           />
           <Button onClick={handleSubscribe} color="blue" className="px-6">
             Subscribe
