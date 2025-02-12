@@ -8,35 +8,34 @@ import { SquaresPlusIcon } from '@heroicons/react/24/solid';
 
 const Services = () => {
   const [services, setServices] = useState([]);
-  const [filter, setFilter] = useState('')
-  const [search, setSearch] = useState('')
+  const [filter, setFilter] = useState('');
+  const [search, setSearch] = useState('');
+  const [sortOrder, setSortOrder] = useState('ascending');
 
-  useEffect(() => {
-    const fetchServicesData = async () => {
-      try {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/services`);
-        setServices(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-    fetchServicesData();
-  }, []);
 
   useEffect(() => {
     const fetchAllServices = async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL
-        }/all-services?filter=${filter}&search=${search}`
-      )
-      setServices(data)
-    }
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/all-services?filter=${filter}&search=${search}`
+        );
+
+        const sortedData = [...data].sort((a, b) =>
+          sortOrder === 'ascending' ? a.price - b.price : b.price - a.price
+        );
+
+        setServices(sortedData);
+      } catch (error) {
+        console.error('Error fetching services:', error);
+      }
+    };
     fetchAllServices();
-  }, [filter, search]);
+  }, [filter, search, sortOrder]);
 
   const handleReset = () => {
-    setFilter('')
-    setSearch('')
+    setFilter('');
+    setSearch('');
+    setSortOrder('ascending');
   }
 
   const h2Variants = {
@@ -50,8 +49,8 @@ const Services = () => {
   };
 
   return (
-    <div className='w-full max-w-7xl mx-auto mt-6 mb-12'>
-      <div className="w-full h-[500px] bg-cover bg-center bg-opacity-50 flex flex-col justify-center items-center text-white rounded-lg"
+    <div className='w-full max-w-screen-2xl mx-auto mt-[76px] pb-16 lg:pb-24'>
+      <div className="w-full h-[400px] bg-cover bg-center bg-opacity-50 flex flex-col justify-center items-center text-white"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80')",
@@ -82,15 +81,13 @@ const Services = () => {
       >
         All Services
       </Typography>
-      <div className='mt-8 max-w-4xl mx-auto flex flex-col md:flex-row gap-6 items-center justify-between'>
-        <div className='flex'>
-          <Button onClick={handleReset}>reset</Button>
-        </div>
+      <div className='mt-12 max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-6'>
         <div>
           <Select color="blue" label="Select Category"
             value={filter}
             onChange={(value) => setFilter(value)}
           >
+            <Option value="">All Categories</Option>
             <Option value="Web Hosting">Web Hosting</Option>
             <Option value="Digital Marketing">Digital Marketing</Option>
             <Option value="Graphic Design">Graphic Design</Option>
@@ -106,8 +103,18 @@ const Services = () => {
             onChange={e => setSearch(e.target.value)}
           />
         </div>
+        <div>
+          <Select color="blue" label="Sort by Price" value={sortOrder} onChange={(value) => setSortOrder(value)}>
+            <Option value="ascending">Ascending</Option>
+            <Option value="descending">Descending</Option>
+          </Select>
+        </div>
+        <div>
+          <Button variant='outlined' color='blue' onClick={handleReset}>reset</Button>
+        </div>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 mx-4'>
+
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 mx-4 lg:mx-0'>
         {services.length > 0 ? (
           services.map(service => (<motion.div key={service._id}
             initial={{ opacity: 0 }}
@@ -115,33 +122,32 @@ const Services = () => {
             transition={{ duration: 0.5 }}
             whileHover={{ scale: 1.025 }}
           >
-            <Card className="">
-              <CardHeader shadow={false} floated={false} className="h-80">
+            <Card className="overflow-hidden group bg-white dark:bg-[rgb(1,21,30)] h-full">
+              <CardHeader shadow={false} floated={false} className="h-64 relative overflow-hidden">
                 <img
                   src={service.serviceImage}
                   alt="card-image"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </CardHeader>
-              <CardBody>
-                <div className="mb-2 flex items-center justify-between">
+              <CardBody className='flex-grow'>
+                <div className="mb-2 flex items-center justify-between text-black dark:text-white">
                   <div>
-                    <Typography variant='lead' color="blue-gray" className="font-medium">
+                    <Typography variant='lead'>
                       {service.serviceTitle}
                     </Typography>
-                    <Typography variant='small' color="blue-gray" className="flex items-center gap-2 font-medium">
-                      <SquaresPlusIcon className='w-4' />
+                    <Typography variant='small' className="flex items-center gap-2 font-medium">
+                      <SquaresPlusIcon className='w-4 text-amber-400' />
                       {service.category}
                     </Typography>
                   </div>
-                  <Typography color="blue-gray" className="font-medium">
+                  <Typography color="amber" className="font-medium">
                     ${service.price}
                   </Typography>
                 </div>
                 <Typography
                   variant="small"
-                  color="gray"
-                  className="font-normal opacity-75"
+                  className="font-normal dark:text-white/50"
                 >
                   {service.description}
                 </Typography>
@@ -149,7 +155,8 @@ const Services = () => {
               <CardFooter className="pt-0">
                 <Link to={`/service/${service._id}`}>
                   <Button
-                    fullWidth={true}
+                    fullWidth
+                    color='light-blue'
                   >
                     See Details
                   </Button>
