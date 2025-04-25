@@ -6,17 +6,15 @@ import Title from '../components/Title';
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className='flex flex-col min-h-screen'>
       <Title></Title>
       <header>
         <NavbarComponent></NavbarComponent>
       </header>
-      <main className='min-h-[calc(100vh-460px)] bg-light-blue-50 dark:bg-black text-black dark:text-white'>
+      <main className='flex-grow bg-blue-gray-50 dark:bg-blue-gray-800 text-gray-800 dark:text-gray-50'>
         <Outlet></Outlet>
       </main>
-      <footer>
-        <Footer></Footer>
-      </footer>
+      <Footer></Footer>
     </div>
   );
 };

@@ -18,7 +18,7 @@ createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <ThemeProvider>
           <RouterProvider router={router}/>
-          <ToastContainer />
+          <ToastContainer position='top-center' />
         </ThemeProvider>
       </AuthProvider>
     </QueryClientProvider>

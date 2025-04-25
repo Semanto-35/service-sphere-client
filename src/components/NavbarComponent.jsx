@@ -85,7 +85,7 @@ const NavbarComponent = () => {
   </>
 
   return (
-    <Navbar fullWidth className={`fixed top-0 left-0 z-50 p-0 bg-gray-50 dark:bg-gray-800 border-none shadow-none`}>
+    <Navbar fullWidth className={`fixed top-0 left-0 z-50 p-0 bg-gray-50 dark:bg-gray-900 border-none shadow-none`}>
       <div className={`flex items-center justify-between max-w-screen-2xl mx-auto py-2 text-gray-800 dark:text-gray-50 px-4 ${open && 'border-b'}`}>
         {/* Logo */}
         <Link to={'/'}>
