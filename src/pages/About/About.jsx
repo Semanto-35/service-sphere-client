@@ -15,7 +15,7 @@ const About = () => {
           About Us
         </Typography>
         <Typography variant="lead" className="max-w-3xl mx-auto">
-          Welcome to <strong>ServiceSphere</strong>, your trusted platform for reviewing and discovering services based on honest user feedback.
+          Welcome to  <strong>ServiceSphere</strong>, your trusted platform for reviewing and discovering services based on honest user feedback.
         </Typography>
       </div>
 
@@ -71,7 +71,7 @@ const About = () => {
 
       <div className="text-center mt-12">
         <Link to={'/services'}>
-          <Button size="lg" color="blue">
+          <Button size="lg" color="blue" >
             Explore Services
           </Button>
         </Link>
