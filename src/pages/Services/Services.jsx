@@ -49,15 +49,15 @@ const Services = () => {
   };
 
   return (
-    <div className='w-full max-w-screen-2xl mx-auto mt-[76px] pb-16 lg:pb-24'>
-      <div className="w-full h-[400px] bg-cover bg-center bg-opacity-50 flex flex-col justify-center items-center text-white"
+    <div className='w-full max-w-screen-2xl mx-auto mt-24 pb-16 lg:pb-24 px-4'>
+      <div className="w-full h-[400px] bg-cover bg-center bg-opacity-50 flex flex-col justify-center items-center text-white rounded-lg"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80')",
         }}
       >
         <motion.h2
-          className="text-4xl font-semibold"
+          className="text-4xl text-center font-semibold"
           variants={h2Variants}
           initial="hidden"
           whileInView="visible"
