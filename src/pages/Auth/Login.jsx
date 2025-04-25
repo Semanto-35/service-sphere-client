@@ -41,12 +41,12 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center gap-10 max-w-7xl mx-auto bg-blue-100 py-12">
+    <div className="flex flex-col lg:flex-row justify-center items-center gap-10 max-w-screen-2xl mx-auto px-4 py-12 mt-20">
       <div className="flex justify-center">
         <Lottie animationData={loginLottie}></Lottie>
       </div>
       <Card className="shadow-md p-8 w-full max-w-md">
-        <Typography variant="h2" className="font-bold text-green-500">
+        <Typography variant="h2" className="font-bold text-blue-500">
           Login Here
         </Typography>
         <Typography variant="small" color="gray" className="font-normal mb-6">
@@ -56,7 +56,7 @@ const Login = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <Input
-              color="green"
+              color="light-blue"
               label="Email"
               type="email"
               {...register("email", {
@@ -78,7 +78,7 @@ const Login = () => {
           </div>
           <div className="mb-1">
             <Input
-              color="green"
+              color="light-blue"
               label="Password"
               type="password"
               {...register("password", {
@@ -88,8 +88,8 @@ const Login = () => {
                   message: "Password must be at least 6 characters",
                 },
                 pattern: {
-                  value: /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d]*$/,
-                  message: "Password must have at least one uppercase and one lowercase letter",
+                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+                  message: "Password must have at least one uppercase, one lowercase letter, one number and one special characters",
                 },
               })}
 
@@ -108,7 +108,7 @@ const Login = () => {
               Forgot Password?
             </a>
           </div>
-          <Button fullWidth type="submit" color="green">
+          <Button fullWidth type="submit" color="blue">
             Login
           </Button>
         </form>

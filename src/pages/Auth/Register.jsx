@@ -6,6 +6,7 @@ import { ExclamationCircleIcon } from "@heroicons/react/24/solid";
 import Lottie from 'lottie-react';
 import registerLottie from '../../assets/lottie/register.json';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 
 const Register = () => {
@@ -21,9 +22,11 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     const { email, password, name, photoURL } = data;
+    const userData = { email, password, name, photoURL, createdAt: new Date() }
 
     try {
-      const result= await createNewUser(email, password);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/user`, userData);
+      const result = await createNewUser(email, password);
       await updateUserProfile({ displayName: name, photoURL });
       setUser({ ...result.user, photoURL, displayName: name })
       toast.success('Signup Successful')
@@ -45,9 +48,9 @@ const Register = () => {
 
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center gap-10 max-w-7xl mx-auto bg-blue-100 py-12">
+    <div className="flex flex-col lg:flex-row justify-center items-center gap-10 max-w-screen-2xl mx-auto py-12 mt-20 px-4">
       <div className="flex justify-center">
-      <Lottie className='w-96' animationData={registerLottie}></Lottie>
+        <Lottie className='w-96' animationData={registerLottie}></Lottie>
       </div>
       <Card className="shadow-md p-8 w-full max-w-md">
         <Typography variant="h2" className="font-bold text-blue-600">
@@ -136,8 +139,8 @@ const Register = () => {
                   message: "Password must be at least 6 characters",
                 },
                 pattern: {
-                  value: /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d]*$/,
-                  message: "Password must have at least one uppercase and one lowercase letter",
+                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+                  message: "Password must have at least one uppercase, one lowercase letter, one number and one special characters",
                 },
               })}
 
