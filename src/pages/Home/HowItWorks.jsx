@@ -1,8 +1,8 @@
 
 const HowItWorks = () => {
   return (
-    <div className="max-w-screen-2xl bg-green-200 py-16 lg:py-24 mx-auto px-6 rounded-lg">
-      <h2 className="text-3xl font-bold text-center mb-6">How It Works</h2>
+    <div className="max-w-screen-2xl py-16 mx-auto px-4 rounded-lg">
+      <h2 className="text-4xl font-bold text-center mb-8">How It Works</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-12">
         <div className="bg-white dark:bg-blue-gray-900 text-black dark:text-white shadow-md rounded-lg p-6 text-center">
           <div className="mb-4">
