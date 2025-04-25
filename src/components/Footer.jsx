@@ -10,123 +10,76 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative w-full bg-blue-gray-900 text-blue-gray-200">
-      <div className="mx-auto w-full max-w-7xl px-8 py-12">
-        <div className="grid grid-cols-1 justify-between gap-8 md:grid-cols-2">
-          <div>
+    <footer className="relative w-full bg-gray-900 text-gray-400">
+      <div className="mx-auto w-full max-w-screen-2xl px-8 md:px-4 py-12">
+        <div className="grid grid-cols-1 justify-between gap-8 md:grid-cols-7">
+          <div className="md:col-span-3">
             <Link to={'/'}>
               <Typography
                 variant="h4"
+                color="light-blue"
                 className="mr-4 flex gap-2 items-center py-1.5 mb-2"
               >
                 <img className='w-12' src={logo} alt="" />
                 ServiceSphere
               </Typography>
             </Link>
-            <Typography variant="small" className="text-gray-400">
+            <Typography variant="small" className="text-gray-500">
               ServiceSphere is a platform that connects users to a variety of services, offering reviews and recommendations.
             </Typography>
           </div>
-          <div className="grid grid-cols-3 justify-between gap-4">
-            <ul>
-              <Typography
-                variant="small"
-                color="blue"
-                className="mb-3 font-medium"
-              >
-                Product
-              </Typography>
-              <li>
-                <Typography
-                  as="a"
-                  href="#"
-                  className="py-1.5 font-normal transition-colors hover:text-blue-500"
-                >
-                  Overview
-                </Typography>
-              </li>
-              <li>
-                <Typography
-                  as="a"
-                  href="#"
-                  className="py-1.5 font-normal transition-colors hover:text-blue-500"
-                >
-                  Features
-                </Typography>
-              </li>
-            </ul>
-            <ul>
-              <Typography
-                variant="small"
-                color="blue"
-                className="mb-3 font-medium"
-              >
-                Company
-              </Typography>
-              <li>
-                <Typography
-                  as="a"
-                  href="/"
-                  className="py-1.5 font-normal transition-colors hover:text-blue-500"
-                >
+
+          <div className="md:col-span-2">
+            <Typography variant="h6" color="light-blue" className="mb-4">
+              Quick Links
+            </Typography>
+            <ul className="space-y-2">
+              <Typography as="li" variant="small" >
+                <Link to="/" className="hover:text-light-blue-500 transition-colors">
                   Home
-                </Typography>
-              </li>
-              <li>
-                <Typography
-                  as="a"
-                  href="/services"
-                  className="py-1.5 font-normal transition-colors hover:text-blue-500"
-                >
-                  Services
-                </Typography>
-              </li>
-              <li>
-                <Typography
-                  as="a"
-                  href="/my-reviews"
-                  className="py-1.5 font-normal transition-colors hover:text-blue-500"
-                >
-                  Reviews
-                </Typography>
-              </li>
-              <li>
-                <Typography
-                  as="a"
-                  href="/"
-                  className="py-1.5 font-normal transition-colors hover:text-blue-500"
-                >
-                  About us
-                </Typography>
-              </li>
-            </ul>
-            <ul>
-              <Typography
-                variant="small"
-                color="blue"
-                className="mb-3 font-medium"
-              >
-                Resource
+                </Link>
               </Typography>
-              <li>
-                <Typography
-                  as="a"
-                  href="#"
-                  className="py-1.5 font-normal transition-colors hover:text-blue-500"
-                >
-                  Newslatter
-                </Typography>
-              </li>
-              <li>
-                <Typography
-                  as="a"
-                  href="#"
-                  className="py-1.5 font-normal transition-colors hover:text-blue-500"
-                >
-                  Help center
-                </Typography>
-              </li>
+              <Typography as="li" variant="small" >
+                <Link to="/services" className="hover:text-light-blue-500 transition-colors">
+                  Services
+                </Link>
+              </Typography>
+              <Typography as="li" variant="small" >
+                <Link to="/add-service" className="hover:text-light-blue-500 transition-colors">
+                  Add Service
+                </Link>
+              </Typography>
+              <Typography as="li" variant="small" >
+                <Link to="/my-services" className="hover:text-light-blue-500 transition-colors">
+                  My Services
+                </Link>
+              </Typography>
+              <Typography as="li" variant="small" >
+                <Link to="/my-reviews" className="hover:text-light-blue-500 transition-colors">
+                  My Reviews
+                </Link>
+              </Typography>
             </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <Typography variant="h6" color="light-blue" className="mb-4">
+              Contact Us
+            </Typography>
+            <address className="not-italic space-y-1">
+              <Typography variant="small" >
+                123 Service Street
+              </Typography>
+              <Typography variant="small" >
+                Dhaka, Bangladesh
+              </Typography>
+              <Typography variant="small" >
+                Email: servicesphere@gmail.com
+              </Typography>
+              <Typography variant="small" >
+                Phone: (123) 456-7890
+              </Typography>
+            </address>
           </div>
         </div>
         <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">

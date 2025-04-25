@@ -9,7 +9,8 @@ const PrivateRoutes = ({children}) => {
 
   if (loading) return <Spinner />
   if (user) return children
-  return <Navigate to='/login' state={location.pathname} />
+  // return <Navigate to='/login' state={location.pathname} />
+  return <Navigate to="/login" state={{ from: location }} replace />;
 }
 
 export default PrivateRoutes;

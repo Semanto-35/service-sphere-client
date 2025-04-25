@@ -15,30 +15,36 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Create user with email and password
   const createNewUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+   // Sign in with Google
   const loginWithGoogle = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   }
 
+  // Sign in with email and password
   const loginUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  // Log out
   const logOut = async () => {
     setLoading(true);
     return signOut(auth);
   };
 
+  // Update user profile
   const updateUserProfile = (updatedData) => {
     return updateProfile(auth.currentUser, updatedData);
   };
 
+  // Observer for user auth state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async currentUser => {
       if (currentUser?.email) {

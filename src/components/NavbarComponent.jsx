@@ -85,8 +85,8 @@ const NavbarComponent = () => {
   </>
 
   return (
-    <Navbar fullWidth className="fixed top-0 left-0 z-50 p-0 bg-white dark:bg-black border-none px-4 shadow-none">
-      <div className="flex items-center justify-between max-w-screen-2xl mx-auto py-2 text-black dark:text-white">
+    <Navbar fullWidth className={`fixed top-0 left-0 z-50 p-0 bg-gray-50 dark:bg-gray-800 border-none shadow-none`}>
+      <div className={`flex items-center justify-between max-w-screen-2xl mx-auto py-2 text-gray-800 dark:text-gray-50 px-4 ${open && 'border-b'}`}>
         {/* Logo */}
         <Link to={'/'}>
           <Typography
@@ -100,7 +100,7 @@ const NavbarComponent = () => {
 
         {/* navlist */}
         <div className="hidden lg:block">
-          <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 text-black dark:text-white">
+          <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 text-gray-800 dark:text-gray-50">
             {links}
           </List>
         </div>
@@ -123,7 +123,7 @@ const NavbarComponent = () => {
                     src={user?.photoURL}
                   />
                 </MenuHandler>
-                <MenuList className="p-2 bg-white dark:bg-black text-black dark:text-white">
+                <MenuList className="p-2 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-50">
                   <div className="px-4 py-2">
                     <Typography variant="h6">
                       {user?.displayName}
@@ -165,7 +165,7 @@ const NavbarComponent = () => {
           {/* Mobile Menu Button */}
           <IconButton
             variant="text"
-            className="lg:hidden text-black dark:text-white"
+            className="lg:hidden text-gray-800 dark:text-gray-50"
             onClick={() => setOpen(!open)}
           >
             {open ? (
@@ -178,9 +178,9 @@ const NavbarComponent = () => {
       </div>
 
       {/* Mobile Navigation Links */}
-      <Collapse className='lg:hidden' open={open}
+      <Collapse className='lg:hidden px-4' open={open}
       >
-        <List className="my-4 p-0 lg:my-0 lg:p-1 text-black dark:text-white">
+        <List className="my-4 p-0 lg:my-0 lg:p-1 text-gray-800 dark:text-gray-50">
           {
             user && <div>
               <div className="flex items-center gap-4">
