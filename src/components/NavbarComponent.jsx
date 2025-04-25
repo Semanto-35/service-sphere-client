@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Navbar, Button, Menu, MenuHandler, MenuList, MenuItem, Avatar, Typography, List, IconButton, Collapse } from "@material-tailwind/react";
-import { HomeIcon, IdentificationIcon, MapIcon, PencilSquareIcon, PowerIcon, } from "@heroicons/react/24/solid";
+import { HomeIcon, IdentificationIcon, MapIcon, PencilSquareIcon, PowerIcon, UserIcon, } from "@heroicons/react/24/solid";
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import logo from '../assets/icons/logo-icon.png';
 import useAuth from "../hooks/useAuth";
@@ -82,6 +82,18 @@ const NavbarComponent = () => {
         )}
       </NavLink>
     </>)}
+    <NavLink to="/about">
+      {({ isActive }) => (
+        <Typography
+          as="li"
+          variant="small"
+          className={`flex items-center gap-1 py-2 pr-4 transition-all ${isActive && 'text-light-blue-700 underline font-medium'}  hover:text-light-blue-700 hover:underline hover:font-medium`}
+        >
+          <UserIcon className="w-5 h-4" />
+          About
+        </Typography>
+      )}
+    </NavLink>
   </>
 
   return (
