@@ -47,7 +47,7 @@ const OurPartners = () => {
           </Typography>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {partners.map((partner, index) => (
             <motion.div
               key={partner.id}
