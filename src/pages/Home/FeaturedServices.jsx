@@ -103,7 +103,7 @@ const FeaturedServices = () => {
             whileHover={{ scale: 1.025 }}
             className="h-full"
           >
-            <Card className="overflow-hidden group bg-white dark:bg-[rgb(1,21,30)] h-full">
+            <Card className="overflow-hidden group bg-white dark:bg-blue-gray-900 h-full">
               <CardHeader shadow={false} floated={false} className="h-64 relative overflow-hidden">
                 <img
                   src={service.serviceImage}
